@@ -3,6 +3,15 @@ import 'package:flutter/material.dart';
 class LocationDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Widget _section(String title, Color color) {
+      return Container(
+        decoration: BoxDecoration(
+          color: color,
+        ),
+        child: Text(title),
+      );
+    }
+
     return (Scaffold(
       appBar: AppBar(
         title: Text("Location Review"),
@@ -11,43 +20,14 @@ class LocationDetail extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.blue[100],
-              ),
-              child: Text("One #1"),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.green[100],
-              ),
-              child: Text("Two #2"),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.orange[100],
-              ),
-              child: Text("Three #3"),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.blue[100],
-              ),
-              child: Text("One #1"),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.green[100],
-              ),
-              child: Text("Two #2"),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.orange[100],
-              ),
-              child: Text("Three #3"),
-            ),
+            _section("The First Section #1", Colors.red[100]),
+            _section("The First Section #1", Colors.green[100]),
+            _section("The First Section #1", Colors.yellow[100]),
+            _section("The First Section #1", Colors.blue[100]),
+            _section("The First Section #1", Colors.lime[100]),
           ]),
     ));
   }
 }
+
+// in flutter the difference between public and the private function is that private start with the underscore that and the public method does'nt so, in the abpove example _section is private.
