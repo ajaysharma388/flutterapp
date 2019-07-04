@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class Styles {
-  static const _textSizeLarge = 25.0;
-  static const _textSizeDefault = 16.0;
+  static const _textSizeLarge = 20.0;
+  static const _textSizeDefault = 15.0;
   static final Color _textColorStrong = _hexToColor('000000');
   static final Color _textColorDefault = _hexToColor('666666');
   static final _fontNameDefault = 'Muli';
