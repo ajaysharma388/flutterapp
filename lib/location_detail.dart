@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'models/location.dart';
+import 'styles.dart';
 
 class LocationDetail extends StatelessWidget {
   final Location location;
@@ -11,11 +12,7 @@ class LocationDetail extends StatelessWidget {
         child: Text(
           text,
           textAlign: TextAlign.left,
-          style: TextStyle(
-            fontFamily: 'RobotoMono',
-            fontSize: 25.0,
-            color: Colors.black,
-          ),
+          style: Styles.heaerLarge,
         ));
   }
 
@@ -25,11 +22,7 @@ class LocationDetail extends StatelessWidget {
         child: Text(
           text,
           textAlign: TextAlign.left,
-          style: TextStyle(
-            fontFamily: 'RobotoMono',
-            fontSize: 16.0,
-            color: Colors.black,
-          ),
+          style: Styles.defaultText,
         ));
   }
 
@@ -60,7 +53,10 @@ class LocationDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return (Scaffold(
       appBar: AppBar(
-        title: Text(this.location.name),
+        title: Text(
+          this.location.name,
+          style: Styles.navbarTitle,
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
