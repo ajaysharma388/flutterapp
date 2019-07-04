@@ -1,31 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
+import 'models/location.dart';
 
 class LocationDetail extends StatelessWidget {
+  final Location location;
+  LocationDetail(this.location);
+  Widget _sectionTitle(String text) {
+    return Container(
+        padding: EdgeInsets.fromLTRB(25.0, 15.0, 15.0, 10.0),
+        child: Text(
+          text,
+          textAlign: TextAlign.left,
+          style: TextStyle(
+            fontFamily: 'RobotoMono',
+            fontSize: 25.0,
+            color: Colors.black,
+          ),
+        ));
+  }
+
+  Widget _sectionText(String text) {
+    return Container(
+        padding: EdgeInsets.fromLTRB(25.0, 5.0, 25.0, 0.0),
+        child: Text(
+          text,
+          textAlign: TextAlign.left,
+          style: TextStyle(
+            fontFamily: 'RobotoMono',
+            fontSize: 16.0,
+            color: Colors.black,
+          ),
+        ));
+  }
+
+  List<Widget> _renderFacts(BuildContext context, Location location) {
+    var result = List<Widget>();
+    for (int i = 0; i < location.fact.length; ++i) {
+      result.add(_sectionTitle(location.fact[i].title));
+      result.add(_sectionText(location.fact[i].text));
+    }
+    return result;
+  }
+
+  Widget _bannerImage(String url, double height) {
+    return Container(
+      constraints: BoxConstraints.tightFor(height: height),
+      child: Image.network(url, fit: BoxFit.fitWidth),
+    );
+  }
+
+  List<Widget> _renderBody(BuildContext context, Location location) {
+    var result = List<Widget>();
+    result.add(_bannerImage(location.url, 190.0));
+    result.addAll(_renderFacts(context, location));
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
-    Widget _section(String title, Color color) {
-      return Container(
-        decoration: BoxDecoration(
-          color: color,
-        ),
-        child: Text(title),
-      );
-    }
-
     return (Scaffold(
       appBar: AppBar(
-        title: Text("Location Review"),
+        title: Text(this.location.name),
       ),
       body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _section("The First Section #1", Colors.red[100]),
-            _section("The First Section #1", Colors.green[100]),
-            _section("The First Section #1", Colors.yellow[100]),
-            _section("The First Section #1", Colors.blue[100]),
-            _section("The First Section #1", Colors.lime[100]),
-          ]),
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: _renderBody(context, location),
+      ),
     ));
   }
 }
